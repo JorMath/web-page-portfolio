@@ -1,23 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, ChevronDown } from "lucide-react";
 import { user } from "../data/user";
 import { Magnet } from "../animations/ReactBits";
 import { useTheme } from "../context/ThemeContext";
-
-const navItems = [
-  { label: "Inicio", href: "#hero" },
-  { label: "Sobre Mi", href: "#about" },
-  { label: "Habilidades", href: "#skills" },
-  { label: "Proyectos", href: "#projects" },
-  { label: "Experiencia", href: "#experience" },
-  { label: "Contacto", href: "#contact" },
-];
+import { useLanguage } from "../context/LanguageContext";
+import type { Locale } from "../i18n/translations";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { locale, setLocale, t } = useLanguage();
+  const langRef = useRef<HTMLDivElement>(null);
+
+  const navItems = [
+    { label: t.nav.home, href: "#hero" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.skills, href: "#skills" },
+    { label: t.nav.projects, href: "#projects" },
+    { label: t.nav.experience, href: "#experience" },
+    { label: t.nav.interests, href: "#interests" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -25,11 +31,32 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close lang dropdown on outside click
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
   const scrollTo = (href: string) => {
     setIsOpen(false);
     const el = document.querySelector(href);
     el?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const switchLang = (newLocale: Locale) => {
+    setLocale(newLocale);
+    setLangOpen(false);
+  };
+
+  const langOptions: { code: Locale; label: string }[] = [
+    { code: "es", label: "ES" },
+    { code: "en", label: "EN" },
+  ];
 
   return (
     <motion.nav
@@ -55,11 +82,39 @@ export function Navbar() {
               </button>
             </Magnet>
           ))}
+
+          {/* Language dropdown */}
+          <div className="lang-toggle" ref={langRef}>
+            <Magnet strength={0.15}>
+              <button
+                className="lang-toggle__btn"
+                onClick={() => setLangOpen(!langOpen)}
+                aria-label={t.lang.switchTo}
+              >
+                {t.lang.label}
+                <ChevronDown size={14} className={`lang-toggle__chevron ${langOpen ? "lang-toggle__chevron--open" : ""}`} />
+              </button>
+            </Magnet>
+            {langOpen && (
+              <div className="lang-toggle__dropdown">
+                {langOptions.map((opt) => (
+                  <button
+                    key={opt.code}
+                    className={`lang-toggle__option ${locale === opt.code ? "lang-toggle__option--active" : ""}`}
+                    onClick={() => switchLang(opt.code)}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <Magnet strength={0.15}>
             <button
               className="theme-toggle"
               onClick={toggleTheme}
-              aria-label={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+              aria-label={theme === "dark" ? t.nav.switchToLight : t.nav.switchToDark}
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
@@ -67,10 +122,35 @@ export function Navbar() {
         </div>
 
         <div className="navbar__mobile-controls">
+          {/* Mobile language toggle */}
+          <div className="lang-toggle lang-toggle--mobile" ref={undefined}>
+            <button
+              className="lang-toggle__btn"
+              onClick={() => setLangOpen(!langOpen)}
+              aria-label={t.lang.switchTo}
+            >
+              {t.lang.label}
+              <ChevronDown size={14} className={`lang-toggle__chevron ${langOpen ? "lang-toggle__chevron--open" : ""}`} />
+            </button>
+            {langOpen && (
+              <div className="lang-toggle__dropdown">
+                {langOptions.map((opt) => (
+                  <button
+                    key={opt.code}
+                    className={`lang-toggle__option ${locale === opt.code ? "lang-toggle__option--active" : ""}`}
+                    onClick={() => switchLang(opt.code)}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <button
             className="theme-toggle navbar__mobile-theme"
             onClick={toggleTheme}
-            aria-label={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+            aria-label={theme === "dark" ? t.nav.switchToLight : t.nav.switchToDark}
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
@@ -110,7 +190,7 @@ export function Navbar() {
               style={{ display: "flex", alignItems: "center", gap: "8px" }}
             >
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-              {theme === "dark" ? "Modo Claro" : "Modo Oscuro"}
+              {theme === "dark" ? t.nav.lightMode : t.nav.darkMode}
             </motion.button>
           </motion.div>
         )}

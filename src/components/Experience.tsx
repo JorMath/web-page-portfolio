@@ -1,14 +1,17 @@
-import { user } from "../data/user";
+import { user, localize } from "../data/user";
 import { BlurText, FadeContent } from "../animations/ReactBits";
 import { Briefcase } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Experience() {
+  const { locale, t } = useLanguage();
+
   return (
     <section id="experience" className="experience">
       <div className="experience__container">
         <div className="experience__header">
           <span className="section-label">04</span>
-          <BlurText text="Experiencia" className="section-title" delay={100} />
+          <BlurText text={t.experience.title} className="section-title" delay={100} />
         </div>
 
         <div className="experience__timeline">
@@ -28,10 +31,10 @@ export function Experience() {
                 </div>
 
                 <div className="timeline-card__content">
-                  <span className="timeline-card__period">{exp.period}</span>
-                  <h3 className="timeline-card__role">{exp.role}</h3>
+                  <span className="timeline-card__period">{localize(exp.period, locale)}</span>
+                  <h3 className="timeline-card__role">{localize(exp.role, locale)}</h3>
                   <span className="timeline-card__company">{exp.company}</span>
-                  <p className="timeline-card__description">{exp.description}</p>
+                  <p className="timeline-card__description">{localize(exp.description, locale)}</p>
 
                   <div className="timeline-card__tags">
                     {exp.technologies.map((tech) => (

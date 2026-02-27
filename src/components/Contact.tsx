@@ -2,6 +2,7 @@ import { useState } from "react";
 import { user } from "../data/user";
 import { BlurText, FadeContent, Magnet } from "../animations/ReactBits";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 // X (formerly Twitter) icon
 const XIcon = ({ size = 20 }: { size?: number }) => (
@@ -16,13 +17,14 @@ export function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Fallback to mailto if no Web3Forms key is configured
     if (!user.web3formsKey) {
-      const mailtoLink = `mailto:${user.email}?subject=Contacto desde Portafolio - ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0ADe: ${formData.name}%0AEmail: ${formData.email}`;
+      const mailtoLink = `mailto:${user.email}?subject=${t.contact.emailSubject} - ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0ADe: ${formData.name}%0AEmail: ${formData.email}`;
       window.open(mailtoLink);
       return;
     }
@@ -39,8 +41,8 @@ export function Contact() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          from_name: "Portafolio Web",
-          subject: `Nuevo mensaje de ${formData.name}`,
+          from_name: t.contact.formSender,
+          subject: `${t.contact.formSubject} ${formData.name}`,
         }),
       });
 
@@ -53,11 +55,11 @@ export function Contact() {
         setTimeout(() => setStatus("idle"), 5000);
       } else {
         setStatus("error");
-        setErrorMsg(data.message || "Hubo un error al enviar el mensaje.");
+        setErrorMsg(data.message || t.contact.errorDefault);
       }
     } catch {
       setStatus("error");
-      setErrorMsg("Error de conexion. Intenta de nuevo mas tarde.");
+      setErrorMsg(t.contact.errorConnection);
     }
   };
 
@@ -66,18 +68,15 @@ export function Contact() {
       <div className="section-separator" />
       <div className="contact__container">
         <div className="contact__header">
-          <span className="section-label">05</span>
-          <BlurText text="Contacto" className="section-title" delay={100} />
+          <span className="section-label">06</span>
+          <BlurText text={t.contact.title} className="section-title" delay={100} />
         </div>
 
         <div className="contact__grid">
           <FadeContent delay={200} direction="left" blur>
             <div className="contact__info">
-              <h3 className="contact__info-title">Hablemos</h3>
-              <p className="contact__info-text">
-                Estoy disponible para proyectos freelance, colaboraciones o posiciones full-time.
-                No dudes en contactarme.
-              </p>
+              <h3 className="contact__info-title">{t.contact.talkTitle}</h3>
+              <p className="contact__info-text">{t.contact.talkText}</p>
 
               <div className="contact__details">
                 <a href={`mailto:${user.email}`} className="contact__detail">
@@ -123,7 +122,7 @@ export function Contact() {
           <FadeContent delay={400} direction="right" blur>
             <form className="contact__form" onSubmit={handleSubmit}>
               <div className="contact__field">
-                <label className="contact__label" htmlFor="name">Nombre</label>
+                <label className="contact__label" htmlFor="name">{t.contact.nameLabel}</label>
                 <input
                   id="name"
                   className="contact__input"
@@ -132,12 +131,12 @@ export function Contact() {
                   disabled={status === "loading"}
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  placeholder="Tu nombre"
+                  placeholder={t.contact.namePlaceholder}
                 />
               </div>
 
               <div className="contact__field">
-                <label className="contact__label" htmlFor="email">Email</label>
+                <label className="contact__label" htmlFor="email">{t.contact.emailLabel}</label>
                 <input
                   id="email"
                   className="contact__input"
@@ -146,12 +145,12 @@ export function Contact() {
                   disabled={status === "loading"}
                   value={formData.email}
                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  placeholder="tu@email.com"
+                  placeholder={t.contact.emailPlaceholder}
                 />
               </div>
 
               <div className="contact__field">
-                <label className="contact__label" htmlFor="message">Mensaje</label>
+                <label className="contact__label" htmlFor="message">{t.contact.messageLabel}</label>
                 <textarea
                   id="message"
                   className="contact__input contact__textarea"
@@ -159,7 +158,7 @@ export function Contact() {
                   disabled={status === "loading"}
                   value={formData.message}
                   onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                  placeholder="Cuentame sobre tu proyecto..."
+                  placeholder={t.contact.messagePlaceholder}
                   rows={5}
                 />
               </div>
@@ -168,7 +167,7 @@ export function Contact() {
               {status === "success" && (
                 <div className="contact__status contact__status--success">
                   <CheckCircle size={18} />
-                  <span>Mensaje enviado con exito. Te respondere pronto!</span>
+                  <span>{t.contact.success}</span>
                 </div>
               )}
 
@@ -188,12 +187,12 @@ export function Contact() {
                   {status === "loading" ? (
                     <>
                       <Loader2 size={18} className="contact__spinner" />
-                      <span>Enviando...</span>
+                      <span>{t.contact.sending}</span>
                     </>
                   ) : (
                     <>
                       <Send size={18} />
-                      <span>Enviar mensaje</span>
+                      <span>{t.contact.send}</span>
                     </>
                   )}
                 </button>

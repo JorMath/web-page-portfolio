@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback, useMemo } from "react";
 import { gsap } from "gsap";
 
-const CURSOR_TARGET_SELECTOR = "a, button, [role='button'], input, textarea, .project-card, .skill-card, .navbar__link, .navbar__logo, .theme-toggle, .spiral-node";
+const CURSOR_TARGET_SELECTOR = "a, button, [role='button'], input, textarea, .project-card, .skill-card, .navbar__link, .navbar__logo, .theme-toggle, .lang-toggle__btn, .lang-toggle__option, .spiral-node, .zzz-display__cell, .zzz-strip__item";
 
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);

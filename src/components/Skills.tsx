@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback, type ReactNode } from "react"
 import { user } from "../data/user";
 import { BlurText, FadeContent } from "../animations/ReactBits";
 import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
 
 import {
   SiTypescript,
@@ -55,15 +56,6 @@ interface SkillItem {
   level: number;
   category: string;
 }
-
-const categoryLabels: Record<string, string> = {
-  languages: "Lenguajes",
-  frontend: "Frontend",
-  backend: "Backend",
-  devops: "DevOps",
-  databases: "Bases de Datos",
-  tools: "Herramientas",
-};
 
 function getAllSkills(): SkillItem[] {
   const all: SkillItem[] = [];
@@ -134,6 +126,7 @@ export function Skills() {
   const allSkills = getAllSkills();
   const count = allSkills.length;
   const { theme } = useTheme();
+  const { t } = useLanguage();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -253,7 +246,7 @@ export function Skills() {
       <div className="skills__container">
         <div className="skills__header">
           <span className="section-label">02</span>
-          <BlurText text="Habilidades" className="section-title" delay={100} />
+          <BlurText text={t.skills.title} className="section-title" delay={100} />
         </div>
 
         <FadeContent delay={200}>
@@ -307,7 +300,7 @@ export function Skills() {
               >
                 <span className="spiral-tooltip__name">{tooltip.skill.name}</span>
                 <span className="spiral-tooltip__category">
-                  {categoryLabels[tooltip.skill.category]}
+                  {t.skills.categories[tooltip.skill.category]}
                 </span>
                 <div className="spiral-tooltip__bar">
                   <div
@@ -325,7 +318,7 @@ export function Skills() {
         <FadeContent delay={350}>
           <div className="spiral-speed">
             <label className="spiral-speed__label" htmlFor="spiral-speed">
-              VELOCIDAD
+              {t.skills.speed}
             </label>
             <input
               id="spiral-speed"

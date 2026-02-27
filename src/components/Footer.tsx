@@ -1,8 +1,10 @@
 import { user } from "../data/user";
 import { FadeContent } from "../animations/ReactBits";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="footer">
@@ -18,7 +20,7 @@ export function Footer() {
 
           <div className="footer__center">
             <p className="footer__text">
-              Diseñado y desarrollado con dedicacion en {user.location.split(",").pop()?.trim()}
+              {t.footer.madeWith} {user.location.split(",").pop()?.trim()}
             </p>
           </div>
 

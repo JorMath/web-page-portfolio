@@ -1,7 +1,8 @@
-import { user } from "../data/user";
+import { user, localize } from "../data/user";
 import { SplitText, RotatingText, FadeContent, Magnet } from "../animations/ReactBits";
 import { DotGrid } from "../animations/DotGrid";
 import { Github, Linkedin, ArrowDown } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 // X (formerly Twitter) icon - lucide-react doesn't have it
 const XIcon = ({ size = 22 }: { size?: number }) => (
@@ -11,6 +12,8 @@ const XIcon = ({ size = 22 }: { size?: number }) => (
 );
 
 export function Hero() {
+  const { locale, t } = useLanguage();
+
   const scrollToAbout = () => {
     document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -35,7 +38,7 @@ export function Hero() {
         <FadeContent delay={200} direction="none" blur>
           <span className="hero__badge">
             <span className="hero__badge-dot" />
-            Disponible para proyectos
+            {t.hero.available}
           </span>
         </FadeContent>
 
@@ -51,9 +54,8 @@ export function Hero() {
         <div className="hero__subtitle">
           <RotatingText
             texts={[
-              user.title,
-              "MERN Stack Developer",
-              "DJango Developer",
+              localize(user.title, locale),
+              ...t.hero.rotatingTexts,
             ]}
             className="hero__rotating"
             interval={3000}
@@ -94,7 +96,7 @@ export function Hero() {
 
         <FadeContent delay={1200}>
           <button className="hero__cta" onClick={scrollToAbout}>
-            <span>Conoce mas</span>
+            <span>{t.hero.cta}</span>
             <ArrowDown size={18} />
           </button>
         </FadeContent>

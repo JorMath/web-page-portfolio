@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { user } from "../data/user";
+import { user, localize } from "../data/user";
 import { BlurText, FadeContent, TiltCard } from "../animations/ReactBits";
 import { Github, ExternalLink } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Projects() {
   const [showAll, setShowAll] = useState(false);
+  const { locale, t } = useLanguage();
   const projects = showAll ? user.projects : user.projects.filter((p) => p.featured);
 
   return (
@@ -13,7 +15,7 @@ export function Projects() {
       <div className="projects__container">
         <div className="projects__header">
           <span className="section-label">03</span>
-          <BlurText text="Proyectos" className="section-title" delay={100} />
+          <BlurText text={t.projects.title} className="section-title" delay={100} />
         </div>
 
         <div className="projects__grid">
@@ -35,7 +37,7 @@ export function Projects() {
 
                 <div className="project-card__content">
                   <h3 className="project-card__title">{project.title}</h3>
-                  <p className="project-card__description">{project.description}</p>
+                  <p className="project-card__description">{localize(project.description, locale)}</p>
 
                   <div className="project-card__tags">
                     {project.technologies.map((tech) => (
@@ -47,13 +49,13 @@ export function Projects() {
                     {project.github && (
                       <a href={project.github} target="_blank" rel="noopener" className="project-card__link">
                         <Github size={16} />
-                        <span>Codigo</span>
+                        <span>{t.projects.code}</span>
                       </a>
                     )}
                     {project.live && (
                       <a href={project.live} target="_blank" rel="noopener" className="project-card__link project-card__link--live">
                         <ExternalLink size={16} />
-                        <span>Demo</span>
+                        <span>{t.projects.demo}</span>
                       </a>
                     )}
                   </div>
@@ -70,7 +72,7 @@ export function Projects() {
                 className="projects__toggle-btn"
                 onClick={() => setShowAll(!showAll)}
               >
-                {showAll ? "Ver menos" : `Ver todos (${user.projects.length})`}
+                {showAll ? t.projects.showLess : `${t.projects.showAll} (${user.projects.length})`}
               </button>
             </div>
           </FadeContent>
