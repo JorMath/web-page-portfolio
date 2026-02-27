@@ -92,7 +92,7 @@ export const translations = {
 
     // Footer
     footer: {
-      madeWith: "Disenado y desarrollado con dedicacion en",
+      madeWith: "Diseñado y desarrollado con dedicación en",
     },
 
     // Language toggle
