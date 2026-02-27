@@ -5,7 +5,7 @@ export const translations = {
     // Navbar
     nav: {
       home: "Inicio",
-      about: "Sobre Mi",
+      about: "Sobre Mí",
       skills: "Habilidades",
       projects: "Proyectos",
       experience: "Experiencia",
@@ -26,11 +26,11 @@ export const translations = {
 
     // About
     about: {
-      title: "Sobre Mi",
-      location: "Ubicacion",
+      title: "Sobre Mí",
+      location: "Ubicación",
       email: "Email",
       languages: "Idiomas",
-      education: "Educacion",
+      education: "Educación",
     },
 
     // Skills
@@ -50,7 +50,7 @@ export const translations = {
     // Projects
     projects: {
       title: "Proyectos",
-      code: "Codigo",
+      code: "Código",
       demo: "Demo",
       showAll: "Ver todos",
       showLess: "Ver menos",
@@ -64,7 +64,7 @@ export const translations = {
     // Interests
     interests: {
       title: "OFF_DUTY",
-      subtitle: "// MÁS ALLÁ DEL CODIGO",
+      subtitle: "// MÁS ALLÁ DEL CÓDIGO",
       games: "GAMES",
       music: "MUSIC",
     },
