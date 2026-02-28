@@ -97,66 +97,7 @@ export const user = {
       live: "https://salinas-yuyay-si.vercel.app/",
       featured: true,
     },
-    {
-      title: "Task Management API",
-      description: {
-        es: "API RESTful para gestion de tareas con autenticacion JWT, roles de usuario y notificaciones en tiempo real via WebSockets.",
-        en: "RESTful API for task management with JWT authentication, user roles, and real-time notifications via WebSockets.",
-      } as Bilingual,
-      technologies: ["NestJS", "TypeScript", "MongoDB", "Socket.io", "Docker"],
-      image: "",
-      github: "https://github.com/juanperez/task-api",
-      live: "",
-      featured: true,
-    },
-    {
-      title: "Weather Dashboard",
-      description: {
-        es: "Dashboard interactivo de clima con datos en tiempo real, graficos historicos y alertas personalizadas para ciudades de Ecuador.",
-        en: "Interactive weather dashboard with real-time data, historical charts, and custom alerts for cities in Ecuador.",
-      } as Bilingual,
-      technologies: ["Next.js", "Tailwind CSS", "Chart.js", "OpenWeather API"],
-      image: "",
-      github: "https://github.com/juanperez/weather-dash",
-      live: "https://weather-ec.vercel.app",
-      featured: true,
-    },
-    {
-      title: "Chat en Tiempo Real",
-      description: {
-        es: "Aplicacion de chat con soporte para grupos, mensajes multimedia y cifrado de extremo a extremo.",
-        en: "Chat application with group support, multimedia messages, and end-to-end encryption.",
-      } as Bilingual,
-      technologies: ["React Native", "Firebase", "WebRTC", "TypeScript"],
-      image: "",
-      github: "https://github.com/juanperez/realtime-chat",
-      live: "",
-      featured: false,
-    },
-    {
-      title: "Portfolio CMS",
-      description: {
-        es: "Sistema de gestion de contenido headless para portafolios con editor WYSIWYG y deploy automatico.",
-        en: "Headless content management system for portfolios with WYSIWYG editor and automatic deployment.",
-      } as Bilingual,
-      technologies: ["Vue.js", "Strapi", "GraphQL", "Vercel"],
-      image: "",
-      github: "https://github.com/juanperez/portfolio-cms",
-      live: "",
-      featured: false,
-    },
-    {
-      title: "DevOps Pipeline Tool",
-      description: {
-        es: "Herramienta CLI para automatizar pipelines de CI/CD con integracion a GitHub Actions y AWS CodePipeline.",
-        en: "CLI tool for automating CI/CD pipelines with GitHub Actions and AWS CodePipeline integration.",
-      } as Bilingual,
-      technologies: ["Go", "Docker", "AWS", "GitHub API"],
-      image: "",
-      github: "https://github.com/juanperez/pipeline-tool",
-      live: "",
-      featured: false,
-    },
+    
   ],
 
   // --- Work Experience ---
@@ -198,23 +139,35 @@ export const user = {
   // --- Education ---
   education: [
     {
-      institution: "Escuela Politecnica Nacional",
+      institution: "Escuela Politécnica Nacional",
       degree: {
-        es: "Ingenieria en Sistemas Informaticos y de Computacion",
-        en: "Computer and Information Systems Engineering",
+        es: "Ingeniero de Software",
+        en: "Software Engineer",
       } as Bilingual,
-      period: "2015 - 2019",
+      period: "2020-2026",
       location: "Quito, Ecuador",
+    },
+    {
+      institution: "Raiola Networks",
+      degree: {
+        es: "Curso de automatizaciones con N8N e Inteligencia Artificial",
+        en: "Course on automation with N8N and Artificial Intelligence",
+      } as Bilingual,
+      period: {
+        es: "2026 - Presente",
+        en: "2026 - Present",
+      } as Bilingual,
+      location: "Online",
     },
     {
       institution: "Udemy / Platzi",
       degree: {
-        es: "Certificaciones en Cloud Computing, DevOps y Arquitectura de Software",
-        en: "Certifications in Cloud Computing, DevOps, and Software Architecture",
+        es: "React: De cero a experto",
+        en: "React: From Zero to Expert",
       } as Bilingual,
       period: {
-        es: "2020 - Presente",
-        en: "2020 - Present",
+        es: "2025 - Presente",
+        en: "2025 - Present",
       } as Bilingual,
       location: "Online",
     },
