@@ -48,40 +48,28 @@ export const user = {
   } as Bilingual<string[]>,
 
   // --- Skills ---
-  skills: {
-    languages: [
-      { name: "TypeScript", level: 95 },
-      { name: "JavaScript", level: 95 },
-      { name: "Python", level: 80 },
-      { name: "SQL", level: 85 },
-      { name: "Java", level: 75 },
-    ],
-    frontend: [
-      { name: "React", level: 95 },
-      { name: "Next.js", level: 90 },
-      { name: "Tailwind CSS", level: 90 },
-    ],
-    backend: [
-      { name: "Node.js", level: 90 },
-      { name: "Express", level: 90 },
-      { name: "Django", level: 75 },
-    ],
-    devops: [
-      { name: "Docker", level: 85 },
-      { name: "CI/CD", level: 85 },
-    ],
-    databases: [
-      { name: "PostgreSQL", level: 90 },
-      { name: "MongoDB", level: 85 },
-    ],
-    tools: [
-      { name: "Git", level: 95 },
-      { name: "VS Code", level: 95 },
-      { name: "Claude Code", level: 85 },
-      { name: "Figma", level: 70 },
-      { name: "Linux", level: 85 },
-    ],
-  },
+  skills: [
+    { name: "TypeScript", type: { es: "Lenguaje", en: "Language" } as Bilingual, desc: { es: "Tipado estático sobre JavaScript para código más robusto y mantenible.", en: "Static typing over JavaScript for more robust and maintainable code." } as Bilingual },
+    { name: "JavaScript", type: { es: "Lenguaje", en: "Language" } as Bilingual, desc: { es: "Lenguaje principal para desarrollo web, tanto en frontend como backend.", en: "Core language for web development, both frontend and backend." } as Bilingual },
+    { name: "Python", type: { es: "Lenguaje", en: "Language" } as Bilingual, desc: { es: "Automatización, scripting y desarrollo de APIs con sintaxis clara.", en: "Automation, scripting, and API development with clean syntax." } as Bilingual },
+    { name: "SQL", type: { es: "Consultas", en: "Queries" } as Bilingual, desc: { es: "Consultas y manipulación de datos en bases de datos relacionales.", en: "Querying and manipulating data in relational databases." } as Bilingual },
+    { name: "Java", type: { es: "Lenguaje", en: "Language" } as Bilingual, desc: { es: "Desarrollo de aplicaciones empresariales y sistemas robustos.", en: "Enterprise application development and robust systems." } as Bilingual },
+    { name: "React", type: { es: "Librería UI", en: "UI Library" } as Bilingual, desc: { es: "Construcción de interfaces de usuario con componentes reutilizables.", en: "Building user interfaces with reusable components." } as Bilingual },
+    { name: "Next.js", type: { es: "Framework", en: "Framework" } as Bilingual, desc: { es: "Framework fullstack con SSR, SSG y API routes sobre React.", en: "Fullstack framework with SSR, SSG, and API routes on top of React." } as Bilingual },
+    { name: "Tailwind CSS", type: { es: "Estilos", en: "Styling" } as Bilingual, desc: { es: "Framework de utilidades CSS para diseño rápido y consistente.", en: "Utility-first CSS framework for fast and consistent design." } as Bilingual },
+    { name: "Node.js", type: { es: "Runtime", en: "Runtime" } as Bilingual, desc: { es: "Entorno de ejecución de JavaScript del lado del servidor.", en: "Server-side JavaScript runtime environment." } as Bilingual },
+    { name: "Express", type: { es: "Framework", en: "Framework" } as Bilingual, desc: { es: "Framework minimalista para construir APIs y servidores web.", en: "Minimal framework for building APIs and web servers." } as Bilingual },
+    { name: "Django", type: { es: "Framework", en: "Framework" } as Bilingual, desc: { es: "Framework web de Python con ORM, admin y seguridad incluidos.", en: "Python web framework with built-in ORM, admin, and security." } as Bilingual },
+    { name: "Docker", type: { es: "Contenedores", en: "Containers" } as Bilingual, desc: { es: "Contenedorización de aplicaciones para despliegues reproducibles.", en: "Application containerization for reproducible deployments." } as Bilingual },
+    { name: "CI/CD", type: { es: "Automatización", en: "Automation" } as Bilingual, desc: { es: "Pipelines de integración y despliegue continuo con GitHub Actions.", en: "Continuous integration and deployment pipelines with GitHub Actions." } as Bilingual },
+    { name: "PostgreSQL", type: { es: "Base de datos", en: "Database" } as Bilingual, desc: { es: "Base de datos relacional avanzada con soporte ACID completo.", en: "Advanced relational database with full ACID compliance." } as Bilingual },
+    { name: "MongoDB", type: { es: "Base de datos", en: "Database" } as Bilingual, desc: { es: "Base de datos NoSQL orientada a documentos para datos flexibles.", en: "Document-oriented NoSQL database for flexible data." } as Bilingual },
+    { name: "Git", type: { es: "Control de versiones", en: "Version Control" } as Bilingual, desc: { es: "Gestión de código fuente con branching, merging y colaboración.", en: "Source code management with branching, merging, and collaboration." } as Bilingual },
+    { name: "VS Code", type: { es: "Editor", en: "Editor" } as Bilingual, desc: { es: "Editor de código principal con extensiones y personalización avanzada.", en: "Primary code editor with extensions and advanced customization." } as Bilingual },
+    { name: "Claude Code", type: { es: "Asistente IA", en: "AI Assistant" } as Bilingual, desc: { es: "Asistente de programación con IA para desarrollo acelerado.", en: "AI-powered programming assistant for accelerated development." } as Bilingual },
+    { name: "Figma", type: { es: "Diseño", en: "Design" } as Bilingual, desc: { es: "Diseño de interfaces y prototipos colaborativos en la nube.", en: "Cloud-based collaborative interface design and prototyping." } as Bilingual },
+    { name: "Linux", type: { es: "Sistema operativo", en: "OS" } as Bilingual, desc: { es: "Administración de servidores, scripting en bash y entornos de desarrollo.", en: "Server administration, bash scripting, and dev environments." } as Bilingual },
+  ],
 
   // --- Projects ---
   projects: [

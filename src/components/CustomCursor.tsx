@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback, useMemo } from "react";
 import { gsap } from "gsap";
 
-const CURSOR_TARGET_SELECTOR = "a, button, [role='button'], input, textarea, .project-card, .skill-card, .navbar__link, .navbar__logo, .theme-toggle, .lang-toggle__btn, .lang-toggle__option, .spiral-node, .zzz-display__cell, .zzz-strip__item";
+const CURSOR_TARGET_SELECTOR = "a, button, [role='button'], input, textarea, .project-card, .skill-card, .navbar__link, .navbar__logo, .theme-toggle, .lang-toggle__btn, .lang-toggle__option, .marquee-icon, .zzz-display__cell, .zzz-strip__item";
 
 export function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -119,7 +119,20 @@ export function CustomCursor() {
     window.addEventListener("mousemove", moveHandler);
 
     const scrollHandler = () => {
-      if (!activeTarget || !cursorRef.current) return;
+      if (!activeTarget || !cursorRef.current || !cornersRef.current) return;
+
+      const rect = activeTarget.getBoundingClientRect();
+      const { borderWidth, cornerSize } = constants;
+
+      // Update corner target positions to follow the element as it scrolls
+      targetCornerPositionsRef.current = [
+        { x: rect.left - borderWidth, y: rect.top - borderWidth },
+        { x: rect.right + borderWidth - cornerSize, y: rect.top - borderWidth },
+        { x: rect.right + borderWidth - cornerSize, y: rect.bottom + borderWidth - cornerSize },
+        { x: rect.left - borderWidth, y: rect.bottom + borderWidth - cornerSize },
+      ];
+
+      // Check if the mouse is still over the target
       const mouseX = gsap.getProperty(cursorRef.current, "x") as number;
       const mouseY = gsap.getProperty(cursorRef.current, "y") as number;
       const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);

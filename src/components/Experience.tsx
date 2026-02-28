@@ -30,8 +30,8 @@ function BiessLogo({ size = 32 }: { size?: number }) {
 }
 
 const companyLogos: Record<string, React.ReactNode> = {
-  SLB: <SLBLogo size={32} />,
-  BIESS: <BiessLogo size={32} />,
+  SLB: <SLBLogo size={44} />,
+  BIESS: <BiessLogo size={44} />,
 };
 
 export function Experience() {

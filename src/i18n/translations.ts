@@ -36,15 +36,6 @@ export const translations = {
     // Skills
     skills: {
       title: "Habilidades",
-      speed: "VELOCIDAD",
-      categories: {
-        languages: "Lenguajes",
-        frontend: "Frontend",
-        backend: "Backend",
-        devops: "DevOps",
-        databases: "Bases de Datos",
-        tools: "Herramientas",
-      } as Record<string, string>,
     },
 
     // Projects
@@ -133,15 +124,6 @@ export const translations = {
 
     skills: {
       title: "Skills",
-      speed: "SPEED",
-      categories: {
-        languages: "Languages",
-        frontend: "Frontend",
-        backend: "Backend",
-        devops: "DevOps",
-        databases: "Databases",
-        tools: "Tools",
-      } as Record<string, string>,
     },
 
     projects: {
@@ -223,8 +205,6 @@ export type Translations = {
   };
   skills: {
     title: string;
-    speed: string;
-    categories: Record<string, string>;
   };
   projects: {
     title: string;
