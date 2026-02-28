@@ -178,36 +178,20 @@ export const user = {
       technologies: ["Dataiku", "Python", "PowerBI", "Spotfire"],
     },
     {
-      company: "StartupXYZ",
+      company: "BIESS",
       role: {
-        es: "Full Stack Developer",
-        en: "Full Stack Developer",
+        es: "Practicante",
+        en: "Intern",
       } as Bilingual,
       period: {
-        es: "2021 - 2023",
-        en: "2021 - 2023",
+        es: "Abril 2025 - Mayo 2025",
+        en: "April 2025 - May 2025",
       } as Bilingual,
       description: {
-        es: "Desarrollo de la plataforma principal de la startup desde cero, alcanzando 50K usuarios activos mensuales.",
-        en: "Built the startup's main platform from scratch, reaching 50K monthly active users.",
+        es: "Soporte de TI y mantenimiento de sistemas en el Banco del Instituto Ecuatoriano de Seguridad Social.",
+        en: "IT Support and systems maintenance at the Banco del Instituto Ecuatoriano de Seguridad Social.",
       } as Bilingual,
-      technologies: ["Next.js", "Node.js", "PostgreSQL", "Docker"],
-    },
-    {
-      company: "Agencia Digital Quito",
-      role: {
-        es: "Frontend Developer",
-        en: "Frontend Developer",
-      } as Bilingual,
-      period: {
-        es: "2019 - 2021",
-        en: "2019 - 2021",
-      } as Bilingual,
-      description: {
-        es: "Desarrollo de sitios web y aplicaciones para clientes corporativos, con enfoque en UX/UI y rendimiento.",
-        en: "Developed websites and applications for corporate clients, focusing on UX/UI and performance.",
-      } as Bilingual,
-      technologies: ["React", "Vue.js", "SCSS", "WordPress"],
+      technologies: ["IT Support", "Systems Maintenance"],
     },
   ],
 
