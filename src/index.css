@@ -126,7 +126,7 @@
 
   /* DotGrid hero background */
   --dotgrid-base: rgba(74, 102, 0, 0.6);
-  --dotgrid-active: #4A6600;
+  --dotgrid-active: #000000;
 }
 
 /* Light theme: project card contrast overrides */
