@@ -160,6 +160,14 @@
   box-shadow: 0 0 0 3px rgba(74, 102, 0, 0.12);
 }
 
+/* Light theme: hero social links contrast override */
+[data-theme="light"] .hero__social-link:hover {
+  color: var(--kiwi-black);
+  border-color: var(--kiwi-black);
+  background: var(--kiwi-primary-06);
+  box-shadow: 0 0 20px var(--kiwi-primary-15);
+}
+
 /* --- Reset & Base --- */
 *,
 *::before,
