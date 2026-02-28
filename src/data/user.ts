@@ -162,20 +162,20 @@ export const user = {
   // --- Work Experience ---
   experience: [
     {
-      company: "TechCorp Ecuador",
+      company: "SLB",
       role: {
-        es: "Senior Software Engineer",
-        en: "Senior Software Engineer",
+        es: "Student Intern",
+        en: "Student Intern",
       } as Bilingual,
       period: {
-        es: "2023 - Presente",
-        en: "2023 - Present",
+        es: "Junio 2025 - Diciembre 2025",
+        en: "June 2025 - December 2025",
       } as Bilingual,
       description: {
-        es: "Liderando el equipo de desarrollo frontend, implementando arquitectura de micro-frontends y mejorando la performance un 40%.",
-        en: "Leading the frontend development team, implementing micro-frontend architecture and improving performance by 40%.",
+        es: "Mantenimiento y creación de nuevas recipes del proyecto 'Weekly Forecast.'",
+        en: "Maintenance and creation of new recipes for the 'Weekly Forecast' project.",
       } as Bilingual,
-      technologies: ["React", "TypeScript", "AWS", "Micro-frontends"],
+      technologies: ["Dataiku", "Python", "PowerBI", "Spotfire"],
     },
     {
       company: "StartupXYZ",
@@ -276,7 +276,7 @@ export const user = {
       {
         title: "Left 4 Dead 2",
         genre: "Co-op Shooter",
-        image: "l4d2.webp",
+        image: "/l4d2.webp",
       },
     ],
     music: [

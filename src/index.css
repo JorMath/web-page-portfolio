@@ -1214,6 +1214,17 @@ img {
   z-index: 1;
 }
 
+.timeline-card__mask-logo {
+  display: inline-block;
+  background-color: var(--kiwi-accent-ui);
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+}
+
 .timeline-card__line {
   width: 2px;
   flex: 1;
