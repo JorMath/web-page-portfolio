@@ -140,6 +140,26 @@
   border-color: var(--kiwi-accent-text);
 }
 
+/* Light theme: contact section contrast overrides */
+[data-theme="light"] .contact__detail:hover {
+  color: var(--kiwi-black);
+}
+
+[data-theme="light"] .contact__detail svg {
+  color: var(--kiwi-black);
+}
+
+[data-theme="light"] .contact__social:hover {
+  color: var(--kiwi-black);
+  border-color: var(--kiwi-black);
+  background: var(--kiwi-primary-06);
+}
+
+[data-theme="light"] .contact__input:focus {
+  border-color: var(--kiwi-accent-ui);
+  box-shadow: 0 0 0 3px rgba(74, 102, 0, 0.12);
+}
+
 /* --- Reset & Base --- */
 *,
 *::before,
