@@ -125,7 +125,7 @@
   --canvas-line-base: 74, 102, 0;
 
   /* DotGrid hero background */
-  --dotgrid-base: rgba(74, 102, 0, 0.35);
+  --dotgrid-base: rgba(74, 102, 0, 0.6);
   --dotgrid-active: #4A6600;
 }
 
